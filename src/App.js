@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Table from "./components/Table/Table";
 
 function App() {
   const [inputs, setInputs] = useState({});
+  const [submitInputs, setsubmitInputs] = useState({});
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -9,11 +11,18 @@ function App() {
 
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    setsubmitInputs(inputs);
     setInputs({});
   };
+
+  let tableContent = <p>No current CV data</p>;
+
+  if (Object.keys(submitInputs).length !== 0) {
+    tableContent = <Table data={submitInputs} />;
+  }
 
   return (
     <>
@@ -42,6 +51,7 @@ function App() {
         />
         <button type="submit">Submit</button>
       </form>
+      {tableContent}
     </>
   );
 }
