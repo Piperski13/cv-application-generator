@@ -7,7 +7,6 @@ const Body = (props) => {
   const [submitInputs, setsubmitInputs] = useState({});
 
   const handleChange = (e) => {
-    console.log(e);
     const name = e.target.name;
     const value = e.target.value;
 

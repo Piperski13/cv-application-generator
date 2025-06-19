@@ -2,6 +2,7 @@ const Table = (props) => {
   const handleEditClick = () => {
     props.editData(props.data);
   };
+  // make this component reactive and dyinamic foor each tr/td
   return (
     <>
       <table>
