@@ -1,5 +1,7 @@
 const Table = (props) => {
-  console.log("Table: ", props.data);
+  const handleEditClick = () => {
+    props.editData(props.data);
+  };
   return (
     <>
       <table>
@@ -20,7 +22,7 @@ const Table = (props) => {
           </tr>
         </tbody>
       </table>
-      <button>Edit</button>
+      <button onClick={handleEditClick}>Edit</button>
     </>
   );
 };

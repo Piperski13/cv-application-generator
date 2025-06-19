@@ -18,6 +18,11 @@ function App() {
     setInputs({});
   };
 
+  const editDataHandler = (userInput) => {
+    setInputs(userInput);
+    setsubmitInputs({});
+  };
+
   let tableContent = <p>No current CV data</p>;
 
   let inputContent = (
@@ -48,7 +53,7 @@ function App() {
   );
 
   if (Object.keys(submitInputs).length !== 0) {
-    tableContent = <Table data={submitInputs} />;
+    tableContent = <Table data={submitInputs} editData={editDataHandler} />;
     inputContent = <></>;
   }
 
