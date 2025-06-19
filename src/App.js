@@ -20,37 +20,42 @@ function App() {
 
   let tableContent = <p>No current CV data</p>;
 
+  let inputContent = (
+    <form onSubmit={handleOnSubmit}>
+      <label>Name</label>
+      <input
+        name="name"
+        value={inputs.name || ""}
+        type="text"
+        onChange={handleChange}
+      />
+      <label>E-mail</label>
+      <input
+        name="email"
+        value={inputs.email || ""}
+        type="email"
+        onChange={handleChange}
+      />
+      <label>Phone</label>
+      <input
+        name="number"
+        value={inputs.number || ""}
+        type="number"
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+
   if (Object.keys(submitInputs).length !== 0) {
     tableContent = <Table data={submitInputs} />;
+    inputContent = <></>;
   }
 
   return (
     <>
       <h2>CV - generator</h2>
-      <form onSubmit={handleOnSubmit}>
-        <label>Name</label>
-        <input
-          name="name"
-          value={inputs.name || ""}
-          type="text"
-          onChange={handleChange}
-        />
-        <label>E-mail</label>
-        <input
-          name="email"
-          value={inputs.email || ""}
-          type="email"
-          onChange={handleChange}
-        />
-        <label>Phone</label>
-        <input
-          name="number"
-          value={inputs.number || ""}
-          type="number"
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      {inputContent}
       {tableContent}
     </>
   );
