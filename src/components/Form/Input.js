@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const Input = (props) => {
   const [inputFields, setInputFields] = useState([
-    { label: "Name", type: "text", name: "name" },
-    { label: "E-mail", type: "email", name: "email" },
-    { label: "Phone Number", type: "number", name: "number" },
+    { label: "Name", type: "text" },
+    { label: "E-mail", type: "email"},
+    { label: "Phone Number", type: "number"},
   ]);
 
   const handleChange = (e) => {
