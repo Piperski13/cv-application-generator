@@ -1,0 +1,15 @@
+//   const inputArray = [
+  //     "Name",
+  //     "Email",
+  //     "Number",
+  //     "School Name",
+  //     "Title of study",
+  //     "Date of study",
+  //   ---------------------
+  //     "Company Name",
+  //     "Position title",
+  //     "Main responsibilities of your jobs",
+  //     "Start date",
+  //     "End date"
+  //   ---------------------
+  //   ];
