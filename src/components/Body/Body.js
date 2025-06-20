@@ -11,6 +11,7 @@ const Body = (props) => {
     const value = e.target.value;
 
     setInputs((values) => ({ ...values, [name]: value }));
+    console.log("inputs: ", inputs);
   };
 
   const handleOnSubmit = (e) => {

@@ -1,4 +1,32 @@
+import { useState } from "react";
+
 const Input = (props) => {
+  const [inputFields, setInputFields] = useState([
+    { label: "Name", type: "text", name: "name" },
+    { label: "E-mail", type: "email", name: "email" },
+    { label: "Phone Number", type: "number", name: "number" },
+  ]);
+
+  const handleChange = (e) => {
+    props.change(e);
+  };
+
+  const handleAddButton = (e) => {};
+
+  const listItems = inputFields.map((labelInput, index) => {
+    const lowerCaseLabel = labelInput.label.toLocaleLowerCase();
+    return (
+      <div key={index}>
+        <label>{labelInput.label}</label>
+        <input
+          name={lowerCaseLabel}
+          value={props.inputs[lowerCaseLabel] || ""}
+          type={labelInput.type}
+          onChange={handleChange}
+        />
+      </div>
+    );
+  });
   //   const inputArray = [
   //     "Name",
   //     "Email",
@@ -6,41 +34,14 @@ const Input = (props) => {
   //     "School Name",
   //     "Title of study",
   //     "Date of study",
+  //   ---------------------
   //     "Company Name",
   //     "Position title",
   //     "Main responsibilities of your jobs",
   //     "Start date",
   //     "End date"
+  //   ---------------------
   //   ];
-  const inputArray = ["Name", "Email", "Number"];
-
-  const handleChange = (e) => {
-    props.change(e);
-  };
-
-  const listItems = inputArray.map((labelInput, index) => {
-    let typeHolder = "";
-    if (labelInput === "Email") {
-      typeHolder = "email";
-    } else if (labelInput === "Number") {
-      typeHolder = "number";
-    } else if (labelInput === "Date of study") {
-      typeHolder = "date";
-    } else typeHolder = "text";
-
-    return (
-      <div key={index}>
-        <label>{labelInput}</label>
-        <input
-          name={labelInput.toLowerCase()}
-          value={props.inputs[labelInput.toLowerCase()] || ""}
-          type={typeHolder}
-          onChange={handleChange}
-        />
-      </div>
-    );
-  });
-
   return <>{listItems}</>;
 };
 
