@@ -61,6 +61,11 @@ const Input = (props) => {
     if (isLastCompany) {
       buttonPlaceHolder = <button onClick={handleAddButton}>+</button>;
     }
+    let test = "";
+
+    // if (labelInput.label.includes("Company Name") && !isLastCompany) {
+    //   test = <button>-</button>;
+    // }
 
     return (
       <div key={index}>
@@ -71,7 +76,7 @@ const Input = (props) => {
           type={labelInput.type}
           onChange={handleChange}
         />
-        {buttonPlaceHolder}
+        {buttonPlaceHolder || test}
       </div>
     );
   });
