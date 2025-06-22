@@ -4,6 +4,7 @@ import Form from "../Form/Form";
 
 const Body = (props) => {
   const [inputs, setInputs] = useState({});
+  const [editBoolean, setEditBoolean] = useState(false);
   const [submitInputs, setsubmitInputs] = useState({});
 
   const handleChange = (e) => {
@@ -11,7 +12,7 @@ const Body = (props) => {
     const value = e.target.value;
 
     setInputs((values) => ({ ...values, [name]: value }));
-    console.log("inputs: ", inputs);
+    // console.log("inputs: ", inputs);
   };
 
   const handleOnSubmit = (e) => {
@@ -22,12 +23,18 @@ const Body = (props) => {
 
   const editDataHandler = (userInput) => {
     setInputs(userInput);
+    setEditBoolean(true);
     setsubmitInputs({});
   };
 
   let tableContent = <p>No current CV data</p>;
   let inputContent = (
-    <Form inputs={inputs} change={handleChange} submit={handleOnSubmit} />
+    <Form
+      inputs={inputs}
+      change={handleChange}
+      submit={handleOnSubmit}
+      edit={editBoolean}
+    />
   );
 
   if (Object.keys(submitInputs).length !== 0) {
