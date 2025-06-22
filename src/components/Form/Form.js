@@ -11,8 +11,8 @@ const Form = (props) => {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <Input change={handleChange} inputs={props.inputs} />
-      
+      <Input change={handleChange} inputs={props.inputs} edit={props.edit} />
+
       <button type="submit">Submit</button>
     </form>
   );
