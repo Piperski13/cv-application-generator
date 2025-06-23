@@ -16,7 +16,7 @@ const Input = (props) => {
         .split(" ")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" "),
-      type: "text",
+      type: "text", // fix
     }));
     setInputFields(newFields);
   }, [props.inputs, props.edit]);
@@ -64,7 +64,10 @@ const Input = (props) => {
     if (isLastCompany) {
       buttonAddPlaceHolder = <button onClick={handleAddButton}>+</button>;
       buttonRemovePlaceHolder = (
-        <button onClick={() => handleRemoveButton(index, lowerCaseLabel)}>
+        <button
+          type="button"
+          onClick={() => handleRemoveButton(index, lowerCaseLabel)}
+        >
           -
         </button>
       );
@@ -72,7 +75,10 @@ const Input = (props) => {
 
     if (isNotLastCompany) {
       buttonRemovePlaceHolder = (
-        <button onClick={() => handleRemoveButton(index, lowerCaseLabel)}>
+        <button
+          type="button"
+          onClick={() => handleRemoveButton(index, lowerCaseLabel)}
+        >
           -
         </button>
       );

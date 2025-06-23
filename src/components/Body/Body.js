@@ -15,18 +15,30 @@ const Body = (props) => {
   };
 
   const handleRemoveInput = (fieldName) => {
-    console.log("fieldName: ", fieldName);
     setInputs((prev) => {
       const newInputs = { ...prev };
       delete newInputs[fieldName];
-      return newInputs;
+
+      const updatedInputs = {};
+      let companyCounter = 1;
+
+      Object.keys(newInputs).forEach((key) => {
+        if (key.startsWith("company name")) {
+          updatedInputs[`company name ${companyCounter}`] = newInputs[key];
+          companyCounter++;
+        } else {
+          updatedInputs[key] = newInputs[key];
+        }
+      });
+
+      return updatedInputs;
     });
   };
+
   console.log("inputs: ", inputs);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // console.log(inputs);
     setsubmitInputs(inputs);
     setInputs({});
   };
