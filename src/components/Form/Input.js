@@ -5,8 +5,8 @@ const Input = (props) => {
     { label: "Name", type: "text" },
     { label: "E-mail", type: "email" },
     { label: "Phone Number", type: "number" },
-    { label: "Company Name", type: "text" },
-    { label: "Position Title", type: "text" },
+    { label: "Company Name", type: "text", groupId: 1011 },
+    { label: "Position Title", type: "text", groupId: 1011 },
   ]);
 
   useEffect(() => {
@@ -15,44 +15,52 @@ const Input = (props) => {
     const newFields = Object.keys(props.inputs).map((key) => {
       const normalizedKey = key.toLowerCase();
       let type = "text";
+
       if (normalizedKey.includes("e-mail")) {
         type = "email";
       } else if (normalizedKey.includes("phone")) {
         type = "number";
       }
 
+      // ✅ Extract groupId if exists (from format like "company name__1011")
+      let groupId;
+      const groupMatch = key.match(/__(\d+)$/);
+      if (groupMatch) {
+        groupId = parseInt(groupMatch[1], 10);
+      }
+      console.log("Key: ", key);
+      console.log("groupId: ", groupId);
       return {
         label: key
           .split(" ")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" "),
-        type: type,
+        type,
+        groupId, // ✅ Set it here
       };
     });
 
     setInputFields(newFields);
   }, [props.inputs, props.edit]);
 
-  console.log("inputFields: ", inputFields);
-
   const handleChange = (e) => {
     props.change(e);
   };
 
   const handleAddButton = () => {
+    const groupId = Date.now();
     const newFields = [
-      { label: "Company Name", type: "text" },
-      { label: "Position Title", type: "text" },
+      { label: "Company Name", type: "text", groupId },
+      { label: "Position Title", type: "text", groupId },
     ];
     setInputFields((prevInputs) => [...prevInputs, ...newFields]);
   };
 
-  const handleRemoveButton = (index, lowerCaseLabel) => {
-    const newIntpus = inputFields.filter((_, i) => i !== index);
-    setInputFields(newIntpus);
-    props.removeInput(lowerCaseLabel);
+  const handleRemoveButton = (groupId) => {
+    setInputFields((prev) => prev.filter((field) => field.groupId !== groupId));
+    props.removeInput(groupId);
   };
-
+  console.log("InputFields: ", inputFields);
   let companyCounter = 0;
 
   const listItems = inputFields.map((labelInput, index) => {
@@ -64,10 +72,10 @@ const Input = (props) => {
     if (labelInput.label.includes("Company Name")) {
       companyCounter++;
       labelPlaceHolder = `Company Name ${companyCounter}`;
-      lowerCaseLabel = `company name ${companyCounter}`;
+      lowerCaseLabel = `company name__${labelInput.groupId}`;
     } else if (labelInput.label === "Position Title") {
       labelPlaceHolder = `Position Title ${companyCounter}`;
-      lowerCaseLabel = `position title ${companyCounter}`;
+      lowerCaseLabel = `position title__${labelInput.groupId}`;
     }
 
     const lastCompanyIndex = inputFields
@@ -86,7 +94,7 @@ const Input = (props) => {
       buttonRemovePlaceHolder = (
         <button
           type="button"
-          onClick={() => handleRemoveButton(index, lowerCaseLabel)}
+          onClick={() => handleRemoveButton(labelInput.groupId)}
         >
           -
         </button>
@@ -97,7 +105,7 @@ const Input = (props) => {
       buttonRemovePlaceHolder = (
         <button
           type="button"
-          onClick={() => handleRemoveButton(index, lowerCaseLabel)}
+          onClick={() => handleRemoveButton(labelInput.groupId)}
         >
           -
         </button>

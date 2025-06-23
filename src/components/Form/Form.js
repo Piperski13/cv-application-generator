@@ -9,8 +9,8 @@ const Form = (props) => {
     props.submit(e);
   };
 
-  const handleRemoveInput = (e) => {
-    props.removeInput(e);
+  const handleRemoveInput = (companyLabel, positionLabel) => {
+    props.removeInput(companyLabel, positionLabel);
   };
 
   return (
