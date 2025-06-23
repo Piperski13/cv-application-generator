@@ -30,25 +30,25 @@ const Input = (props) => {
     setInputFields((prevInputs) => [...prevInputs, newCompany]);
   };
 
+  const handleRemoveButton = (index, lowerCaseLabel) => {
+    const newIntpus = inputFields.filter((_, i) => i !== index);
+    setInputFields(newIntpus);
+    props.removeInput(lowerCaseLabel);
+  };
+
   let companyCounter = 0;
+
   const listItems = inputFields.map((labelInput, index) => {
     let lowerCaseLabel = labelInput.label.toLocaleLowerCase();
     let labelPlaceHolder = labelInput.label;
-    let buttonPlaceHolder = "";
+    let buttonAddPlaceHolder = "";
+    let buttonRemovePlaceHolder = "";
 
     if (labelInput.label.includes("Company Name")) {
       companyCounter++;
       labelPlaceHolder = `Company Name ${companyCounter}`;
       lowerCaseLabel = `company name ${companyCounter}`;
-      //   labelPlaceHolder = `${labelInput.label} ${companyCounter}`;
-      //   lowerCaseLabel = `${labelInput.label.toLocaleLowerCase()} ${companyCounter}`;
     }
-
-    // console.log("Checking label:", labelInput.label);
-    // console.log(
-    //   "Includes 'Company Name'?",
-    //   labelInput.label.includes("Company Name")
-    // );
 
     const lastCompanyIndex = inputFields
       .map((item) => item.label)
@@ -58,14 +58,25 @@ const Input = (props) => {
     const isLastCompany =
       labelInput.label.includes("Company Name") && index === lastCompanyIndex;
 
-    if (isLastCompany) {
-      buttonPlaceHolder = <button onClick={handleAddButton}>+</button>;
-    }
-    let test = "";
+    const isNotLastCompany =
+      labelInput.label.includes("Company Name") && index !== lastCompanyIndex;
 
-    // if (labelInput.label.includes("Company Name") && !isLastCompany) {
-    //   test = <button>-</button>;
-    // }
+    if (isLastCompany) {
+      buttonAddPlaceHolder = <button onClick={handleAddButton}>+</button>;
+      buttonRemovePlaceHolder = (
+        <button onClick={() => handleRemoveButton(index, lowerCaseLabel)}>
+          -
+        </button>
+      );
+    }
+
+    if (isNotLastCompany) {
+      buttonRemovePlaceHolder = (
+        <button onClick={() => handleRemoveButton(index, lowerCaseLabel)}>
+          -
+        </button>
+      );
+    }
 
     return (
       <div key={index}>
@@ -76,7 +87,8 @@ const Input = (props) => {
           type={labelInput.type}
           onChange={handleChange}
         />
-        {buttonPlaceHolder || test}
+        {buttonAddPlaceHolder}
+        {buttonRemovePlaceHolder}
       </div>
     );
   });

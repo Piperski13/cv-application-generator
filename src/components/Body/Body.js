@@ -12,11 +12,21 @@ const Body = (props) => {
     const value = e.target.value;
 
     setInputs((values) => ({ ...values, [name]: value }));
-    // console.log("inputs: ", inputs);
   };
+
+  const handleRemoveInput = (fieldName) => {
+    console.log("fieldName: ", fieldName);
+    setInputs((prev) => {
+      const newInputs = { ...prev };
+      delete newInputs[fieldName];
+      return newInputs;
+    });
+  };
+  console.log("inputs: ", inputs);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    // console.log(inputs);
     setsubmitInputs(inputs);
     setInputs({});
   };
@@ -34,6 +44,7 @@ const Body = (props) => {
       change={handleChange}
       submit={handleOnSubmit}
       edit={editBoolean}
+      removeInput={handleRemoveInput}
     />
   );
 

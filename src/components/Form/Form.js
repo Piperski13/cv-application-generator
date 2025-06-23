@@ -9,9 +9,18 @@ const Form = (props) => {
     props.submit(e);
   };
 
+  const handleRemoveInput = (e) => {
+    props.removeInput(e);
+  };
+
   return (
     <form onSubmit={handleOnSubmit}>
-      <Input change={handleChange} inputs={props.inputs} edit={props.edit} />
+      <Input
+        change={handleChange}
+        inputs={props.inputs}
+        edit={props.edit}
+        removeInput={handleRemoveInput}
+      />
 
       <button type="submit">Submit</button>
     </form>
