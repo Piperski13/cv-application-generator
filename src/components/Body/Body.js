@@ -12,16 +12,53 @@ const Body = (props) => {
     const value = e.target.value;
 
     setInputs((values) => ({ ...values, [name]: value }));
-    // console.log("inputs: ", inputs);
+  };
+
+  const handleRemoveInput = (groupId) => {
+    setInputs((prev) => {
+      const newInputs = { ...prev };
+
+      Object.keys(newInputs).forEach((key) => {
+        if (key.endsWith(`__${groupId}`)) {
+          delete newInputs[key];
+        }
+      });
+
+      return newInputs;
+    });
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    setsubmitInputs(inputs);
+
+    const fixedKeys = ["name", "e-mail", "phone number"];
+    const fixedInputs = {};
+    const companyGroups = {};
+
+    for (const [key, value] of Object.entries(inputs)) {
+      if (fixedKeys.includes(key)) {
+        fixedInputs[key] = value;
+      } else {
+        const [field, id] = key.split("__");
+        if (!companyGroups[id]) companyGroups[id] = {};
+        companyGroups[id][field] = value;
+      }
+    }
+
+    const orderedInputs = { ...fixedInputs };
+
+    Object.keys(companyGroups).forEach((id) => {
+      const group = companyGroups[id];
+      orderedInputs[`company name__${id}`] = group["company name"] || "";
+      orderedInputs[`position title__${id}`] = group["position title"] || "";
+    });
+
+    setsubmitInputs(orderedInputs);
     setInputs({});
   };
 
   const editDataHandler = (userInput) => {
+    console.log("USER INPUT EDIT: ", userInput);
     setInputs(userInput);
     setEditBoolean(true);
     setsubmitInputs({});
@@ -34,6 +71,7 @@ const Body = (props) => {
       change={handleChange}
       submit={handleOnSubmit}
       edit={editBoolean}
+      removeInput={handleRemoveInput}
     />
   );
 

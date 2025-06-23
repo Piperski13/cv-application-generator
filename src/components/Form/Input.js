@@ -5,19 +5,41 @@ const Input = (props) => {
     { label: "Name", type: "text" },
     { label: "E-mail", type: "email" },
     { label: "Phone Number", type: "number" },
-    { label: "Company Name", type: "text" },
+    { label: "Company Name", type: "text", groupId: 1011 },
+    { label: "Position Title", type: "text", groupId: 1011 },
   ]);
 
   useEffect(() => {
     if (props.edit === false) return;
 
-    const newFields = Object.keys(props.inputs).map((key) => ({
-      label: key
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
-      type: "text",
-    }));
+    const newFields = Object.keys(props.inputs).map((key) => {
+      const normalizedKey = key.toLowerCase();
+      let type = "text";
+
+      if (normalizedKey.includes("e-mail")) {
+        type = "email";
+      } else if (normalizedKey.includes("phone")) {
+        type = "number";
+      }
+
+      // ✅ Extract groupId if exists (from format like "company name__1011")
+      let groupId;
+      const groupMatch = key.match(/__(\d+)$/);
+      if (groupMatch) {
+        groupId = parseInt(groupMatch[1], 10);
+      }
+      console.log("Key: ", key);
+      console.log("groupId: ", groupId);
+      return {
+        label: key
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" "),
+        type,
+        groupId, // ✅ Set it here
+      };
+    });
+
     setInputFields(newFields);
   }, [props.inputs, props.edit]);
 
@@ -26,29 +48,35 @@ const Input = (props) => {
   };
 
   const handleAddButton = () => {
-    let newCompany = { label: "Company Name", type: "text" };
-    setInputFields((prevInputs) => [...prevInputs, newCompany]);
+    const groupId = Date.now();
+    const newFields = [
+      { label: "Company Name", type: "text", groupId },
+      { label: "Position Title", type: "text", groupId },
+    ];
+    setInputFields((prevInputs) => [...prevInputs, ...newFields]);
   };
 
+  const handleRemoveButton = (groupId) => {
+    setInputFields((prev) => prev.filter((field) => field.groupId !== groupId));
+    props.removeInput(groupId);
+  };
+  console.log("InputFields: ", inputFields);
   let companyCounter = 0;
+
   const listItems = inputFields.map((labelInput, index) => {
     let lowerCaseLabel = labelInput.label.toLocaleLowerCase();
     let labelPlaceHolder = labelInput.label;
-    let buttonPlaceHolder = "";
+    let buttonAddPlaceHolder = "";
+    let buttonRemovePlaceHolder = "";
 
     if (labelInput.label.includes("Company Name")) {
       companyCounter++;
       labelPlaceHolder = `Company Name ${companyCounter}`;
-      lowerCaseLabel = `company name ${companyCounter}`;
-      //   labelPlaceHolder = `${labelInput.label} ${companyCounter}`;
-      //   lowerCaseLabel = `${labelInput.label.toLocaleLowerCase()} ${companyCounter}`;
+      lowerCaseLabel = `company name__${labelInput.groupId}`;
+    } else if (labelInput.label === "Position Title") {
+      labelPlaceHolder = `Position Title ${companyCounter}`;
+      lowerCaseLabel = `position title__${labelInput.groupId}`;
     }
-
-    // console.log("Checking label:", labelInput.label);
-    // console.log(
-    //   "Includes 'Company Name'?",
-    //   labelInput.label.includes("Company Name")
-    // );
 
     const lastCompanyIndex = inputFields
       .map((item) => item.label)
@@ -58,14 +86,31 @@ const Input = (props) => {
     const isLastCompany =
       labelInput.label.includes("Company Name") && index === lastCompanyIndex;
 
-    if (isLastCompany) {
-      buttonPlaceHolder = <button onClick={handleAddButton}>+</button>;
-    }
-    let test = "";
+    const isNotLastCompany =
+      labelInput.label.includes("Company Name") && index !== lastCompanyIndex;
 
-    // if (labelInput.label.includes("Company Name") && !isLastCompany) {
-    //   test = <button>-</button>;
-    // }
+    if (isLastCompany) {
+      buttonAddPlaceHolder = <button onClick={handleAddButton}>+</button>;
+      buttonRemovePlaceHolder = (
+        <button
+          type="button"
+          onClick={() => handleRemoveButton(labelInput.groupId)}
+        >
+          -
+        </button>
+      );
+    }
+
+    if (isNotLastCompany) {
+      buttonRemovePlaceHolder = (
+        <button
+          type="button"
+          onClick={() => handleRemoveButton(labelInput.groupId)}
+        >
+          -
+        </button>
+      );
+    }
 
     return (
       <div key={index}>
@@ -76,7 +121,8 @@ const Input = (props) => {
           type={labelInput.type}
           onChange={handleChange}
         />
-        {buttonPlaceHolder || test}
+        {buttonAddPlaceHolder}
+        {buttonRemovePlaceHolder}
       </div>
     );
   });
