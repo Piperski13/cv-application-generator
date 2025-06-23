@@ -35,9 +35,43 @@ const Body = (props) => {
     });
   };
 
+  // const handleOnSubmit = (e) => {
+  //   e.preventDefault();
+  //   setsubmitInputs(inputs);
+  //   console.log("in handle inputs: ", inputs);
+  //   setInputs({});
+  // };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    setsubmitInputs(inputs);
+
+    const fixedFields = ["name", "e-mail", "phone number"];
+
+    // Extract all dynamic company keys like "company name 1", "company name 2", etc.
+    // Then extract the numbers (1, 2, 3...) and sort them
+    const companyNumbers = Object.keys(inputs)
+      .filter((key) => key.startsWith("company name"))
+      .map((key) => {
+        const match = key.match(/company name (\d+)/);
+        return match ? parseInt(match[1], 10) : null;
+      })
+      .filter((num) => num !== null)
+      .sort((a, b) => a - b);
+
+    const orderedFields = [...fixedFields];
+
+    companyNumbers.forEach((num) => {
+      orderedFields.push(`company name ${num}`);
+      orderedFields.push(`position title ${num}`);
+    });
+
+    const orderedInputs = {};
+
+    orderedFields.forEach((field) => {
+      orderedInputs[field] = inputs[field] || "";
+    });
+
+    setsubmitInputs(orderedInputs);
     setInputs({});
   };
 

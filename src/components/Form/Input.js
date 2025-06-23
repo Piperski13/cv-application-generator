@@ -6,6 +6,7 @@ const Input = (props) => {
     { label: "E-mail", type: "email" },
     { label: "Phone Number", type: "number" },
     { label: "Company Name", type: "text" },
+    { label: "Position Title", type: "text" },
   ]);
 
   useEffect(() => {
@@ -39,8 +40,11 @@ const Input = (props) => {
   };
 
   const handleAddButton = () => {
-    let newCompany = { label: "Company Name", type: "text" };
-    setInputFields((prevInputs) => [...prevInputs, newCompany]);
+    const newFields = [
+      { label: "Company Name", type: "text" },
+      { label: "Position Title", type: "text" },
+    ];
+    setInputFields((prevInputs) => [...prevInputs, ...newFields]);
   };
 
   const handleRemoveButton = (index, lowerCaseLabel) => {
@@ -61,6 +65,9 @@ const Input = (props) => {
       companyCounter++;
       labelPlaceHolder = `Company Name ${companyCounter}`;
       lowerCaseLabel = `company name ${companyCounter}`;
+    } else if (labelInput.label === "Position Title") {
+      labelPlaceHolder = `Position Title ${companyCounter}`;
+      lowerCaseLabel = `position title ${companyCounter}`;
     }
 
     const lastCompanyIndex = inputFields
