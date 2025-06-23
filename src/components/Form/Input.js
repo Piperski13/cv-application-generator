@@ -11,15 +11,28 @@ const Input = (props) => {
   useEffect(() => {
     if (props.edit === false) return;
 
-    const newFields = Object.keys(props.inputs).map((key) => ({
-      label: key
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
-      type: "text", // fix
-    }));
+    const newFields = Object.keys(props.inputs).map((key) => {
+      const normalizedKey = key.toLowerCase();
+      let type = "text";
+      if (normalizedKey.includes("e-mail")) {
+        type = "email";
+      } else if (normalizedKey.includes("phone")) {
+        type = "number";
+      }
+
+      return {
+        label: key
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" "),
+        type: type,
+      };
+    });
+
     setInputFields(newFields);
   }, [props.inputs, props.edit]);
+
+  console.log("inputFields: ", inputFields);
 
   const handleChange = (e) => {
     props.change(e);

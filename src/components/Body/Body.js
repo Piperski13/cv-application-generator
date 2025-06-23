@@ -35,8 +35,6 @@ const Body = (props) => {
     });
   };
 
-  console.log("inputs: ", inputs);
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
     setsubmitInputs(inputs);
