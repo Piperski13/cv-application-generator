@@ -5,7 +5,7 @@ function App() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("Log object: ", name);
+    console.log("Log object name: ", name);
   };
 
   return (
