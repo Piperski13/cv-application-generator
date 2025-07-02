@@ -1,10 +1,10 @@
-import Body from "./components/Body/Body";
+
+import InfoForm from "./components/InfoForm/InfoForm";
 
 function App() {
   return (
     <>
-      <h2>CV - generator</h2> 
-      <Body />
+      <InfoForm />
     </>
   );
 }
