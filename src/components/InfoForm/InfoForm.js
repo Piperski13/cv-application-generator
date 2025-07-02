@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Table from "../InfoTable/InfoTable";
+import InfoTable from "../InfoTable/InfoTable";
 
 const InfoForm = (props) => {
   const [name, setName] = useState("");
@@ -8,7 +8,7 @@ const InfoForm = (props) => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const staticInfo = [
+  const userInformation = [
     { label: "Name", type: "text", value: name, setter: setName },
     {
       label: "Phone Number",
@@ -21,13 +21,17 @@ const InfoForm = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("Log object name: ", staticInfo);
+    console.log("Log object name: ", userInformation);
     setIsSubmitted(true);
+  };
+
+  const editHandler = (e) => {
+    setIsSubmitted(false);
   };
 
   let formInputs = (
     <form onSubmit={handleOnSubmit}>
-      {staticInfo.map((info, index) => (
+      {userInformation.map((info, index) => (
         <div key={index}>
           <label>{info.label}</label>
           <input
@@ -42,7 +46,7 @@ const InfoForm = (props) => {
   );
 
   if (isSubmitted) {
-    formInputs = <Table infoData={staticInfo} />;
+    formInputs = <InfoTable infoData={userInformation} edit={editHandler} />;
   }
 
   return (

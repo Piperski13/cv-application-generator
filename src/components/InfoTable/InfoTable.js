@@ -1,5 +1,10 @@
 import RenderedInfo from "./RenderedInfo";
-const Table = (props) => {
+const InfoTable = (props) => {
+  const handleEdit = (e) => {
+    e.preventDefault();
+    props.edit(e);
+  };
+
   return (
     <>
       <table>
@@ -12,9 +17,9 @@ const Table = (props) => {
           <RenderedInfo infoData={props.infoData} />
         </tbody>
       </table>
-      <button>Edit</button>
+      <button onClick={handleEdit}>Edit</button>
     </>
   );
 };
 
-export default Table;
+export default InfoTable;
