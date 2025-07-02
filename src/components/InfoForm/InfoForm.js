@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RenderedInfo from "../Renders/RenderedInfo";
+import Table from "../InfoTable/InfoTable";
 
 const InfoForm = (props) => {
   const [name, setName] = useState("");
@@ -42,7 +42,7 @@ const InfoForm = (props) => {
   );
 
   if (isSubmitted) {
-    formInputs = <RenderedInfo />;
+    formInputs = <Table infoData={staticInfo} />;
   }
 
   return (
