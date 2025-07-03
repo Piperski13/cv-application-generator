@@ -181,7 +181,7 @@ const CompanyForm = (props) => {
       <CompanyTable companyData={companyInformation} edit={editHandler} />
     );
   }
-  console.log("companyInformation: ", companyInformation);
+
   return <>{formInputs}</>;
 };
 export default CompanyForm;

@@ -1,5 +1,4 @@
 const RenderedCompany = (props) => {
-  console.log(props.companyData);
   return (
     <>
       {props.companyData.map((company, index) => (

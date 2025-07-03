@@ -1,10 +1,6 @@
 import { useState } from "react";
 import EducationTable from "../EducationTable/EducationTable";
-// education: [
-//     { educationId: 1011, schoolName: "levi", titleOfStudy: "Software",
-//          startDate: "may", endDate:"june" },
-//     ...
-//   ]
+
 const EducationForm = (props) => {
   const [educationInformation, setEducationInformation] = useState({
     educations: [
@@ -153,7 +149,9 @@ const EducationForm = (props) => {
                 handleOnChange(education.educationId, "endDate", e)
               }
             />
-            <button onClick={(e) => handleDeleteButton(education.educationId, e)}>
+            <button
+              onClick={(e) => handleDeleteButton(education.educationId, e)}
+            >
               Delete
             </button>
           </div>
@@ -169,7 +167,7 @@ const EducationForm = (props) => {
       <EducationTable educationData={educationInformation} edit={editHandler} />
     );
   }
-  console.log("educationInformation: ", educationInformation);
+
   return <>{formInputs}</>;
 };
 export default EducationForm;

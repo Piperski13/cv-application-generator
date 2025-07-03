@@ -2,31 +2,36 @@ import { useState } from "react";
 import InfoTable from "../InfoTable/InfoTable";
 
 const InfoForm = (props) => {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const userInformation = [
-    { label: "Name", type: "text", value: name, setter: setName },
+  const [userInformation, setuserInformation] = useState([
+    { label: "Name", type: "text", value: "" },
     {
       label: "Phone Number",
       type: "number",
-      value: phoneNumber,
-      setter: setPhoneNumber,
+      value: "",
     },
-    { label: "E-mail", type: "email", value: email, setter: setEmail },
-  ];
+    { label: "E-mail", type: "email", value: "" },
+  ]);
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("Log object name: ", userInformation);
     setIsSubmitted(true);
   };
 
   const editHandler = (e) => {
     setIsSubmitted(false);
+  };
+
+  const onChaneHandler = (e, label) => {
+    e.preventDefault();
+    const value = e.target.value;
+
+    setuserInformation((prevInfo) =>
+      prevInfo.map((info) =>
+        info.label === label ? { ...info, value: value } : info
+      )
+    );
   };
 
   let formInputs = (
@@ -39,7 +44,7 @@ const InfoForm = (props) => {
             <input
               type={info.type}
               value={info.value}
-              onChange={(e) => info.setter(e.target.value)}
+              onChange={(e) => onChaneHandler(e, info.label)}
             />
           </div>
         ))}
