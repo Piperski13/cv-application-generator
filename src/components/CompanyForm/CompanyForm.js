@@ -10,7 +10,7 @@ const CompanyForm = (props) => {
   const [companyInformation, setCompanyInformation] = useState({
     companies: [
       {
-        companyId: 1,
+        companyId: Date.now(),
         companyName: {
           value: "",
           nameLabel: "Company Name",
@@ -34,8 +34,39 @@ const CompanyForm = (props) => {
     // setIsSubmitted(true);
   };
 
-  const handleAddClick = (e) => {
+  const handleAddButton = (e) => {
     e.preventDefault();
+    const companyId = Date.now();
+
+    const newCompany = {
+      companyId,
+      companyName: {
+        value: "",
+        nameLabel: "Company Name",
+        name: "companyname",
+        type: "text",
+      },
+      position: {
+        value: "",
+        positionLabel: "Position Title",
+        name: "positiontitle",
+        type: "text",
+      },
+    };
+    setCompanyInformation((prevCompanies) => ({
+      ...prevCompanies,
+      companies: [...prevCompanies.companies, newCompany],
+    }));
+  };
+
+  const handleDeleteButton = (companyId, e) => {
+    e.preventDefault();
+    setCompanyInformation((prevCompanies) => ({
+      ...prevCompanies,
+      companies: prevCompanies.companies.filter(
+        (company) => company.companyId !== companyId
+      ),
+    }));
   };
 
   const handleOnChange = (companyId, name, e) => {
@@ -77,9 +108,12 @@ const CompanyForm = (props) => {
             value={company.position.value}
             onChange={(e) => handleOnChange(company.companyId, "position", e)}
           />
+          <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
+            Delete
+          </button>
         </div>
       ))}
-      <button onClick={handleAddClick}>Add</button>
+      <button onClick={handleAddButton}>Add</button>
       <button type="submit">Submit</button>
     </form>
   );
