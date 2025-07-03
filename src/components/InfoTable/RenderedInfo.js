@@ -1,5 +1,4 @@
 const RenderedInfo = (props) => {
-  console.log(props.infoData);
   return (
     <>
       {props.infoData.map((info, index) => (
