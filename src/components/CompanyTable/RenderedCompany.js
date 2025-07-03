@@ -20,12 +20,12 @@ const RenderedCompany = (props) => {
               {company.responsibilities.value}
             </td>
           </tr>
-          <tr key={`startDate-${index}`}>
+          <tr key={`company-startDate-${index}`}>
             <td>
               {company.startDate.startDateLabel}: {company.startDate.value}
             </td>
           </tr>
-          <tr key={`endDate-${index}`}>
+          <tr key={`company-endDate-${index}`}>
             <td>
               {company.endDate.endDateLabel}: {company.endDate.value}
             </td>
