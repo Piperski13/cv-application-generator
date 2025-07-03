@@ -115,6 +115,7 @@ const EducationForm = (props) => {
           <div key={education.educationId}>
             <label>{education.schoolName.nameLabel}</label>
             <input
+              required
               name={education.schoolName.name}
               type={education.schoolName.type}
               value={education.schoolName.value}
@@ -124,6 +125,7 @@ const EducationForm = (props) => {
             />
             <label>{education.titleOfStudy.titleOfStudyLabel}</label>
             <input
+              required
               name={education.titleOfStudy.name}
               type={education.titleOfStudy.type}
               value={education.titleOfStudy.value}
@@ -133,6 +135,7 @@ const EducationForm = (props) => {
             />
             <label>{education.startDate.startDateLabel}</label>
             <input
+              required
               name={education.startDate.name}
               type={education.startDate.type}
               value={education.startDate.value}
@@ -142,6 +145,7 @@ const EducationForm = (props) => {
             />
             <label>{education.endDate.endDateLabel}</label>
             <input
+              required
               name={education.endDate.name}
               type={education.endDate.type}
               value={education.endDate.value}

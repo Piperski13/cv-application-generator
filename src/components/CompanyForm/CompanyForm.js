@@ -125,6 +125,7 @@ const CompanyForm = (props) => {
           <div key={company.companyId}>
             <label>{company.companyName.nameLabel}</label>
             <input
+              required
               name={company.companyName.name}
               type={company.companyName.type}
               value={company.companyName.value}
@@ -134,6 +135,7 @@ const CompanyForm = (props) => {
             />
             <label>{company.position.positionLabel}</label>
             <input
+              required
               name={company.position.name}
               type={company.position.type}
               value={company.position.value}
@@ -141,6 +143,7 @@ const CompanyForm = (props) => {
             />
             <label>{company.responsibilities.responsibilitiesLabel}</label>
             <textarea
+              required
               name={company.responsibilities.name}
               value={company.responsibilities.value}
               onChange={(e) =>
@@ -151,6 +154,7 @@ const CompanyForm = (props) => {
             />
             <label>{company.startDate.startDateLabel}</label>
             <input
+              required
               name={company.startDate.name}
               type={company.startDate.type}
               value={company.startDate.value}
@@ -160,6 +164,7 @@ const CompanyForm = (props) => {
             />
             <label>{company.endDate.endDateLabel}</label>
             <input
+              required
               name={company.endDate.name}
               type={company.endDate.type}
               value={company.endDate.value}
