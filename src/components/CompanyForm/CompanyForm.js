@@ -89,37 +89,42 @@ const CompanyForm = (props) => {
   };
 
   let formInputs = (
-    <form onSubmit={handleOnSubmit}>
-      {companyInformation.companies.map((company) => (
-        <div key={company.companyId}>
-          <label>{company.companyName.nameLabel}</label>
-          <input
-            name={company.companyName.name}
-            type={company.companyName.type}
-            value={company.companyName.value}
-            onChange={(e) =>
-              handleOnChange(company.companyId, "companyName", e)
-            }
-          />
-          <label>{company.position.positionLabel}</label>
-          <input
-            name={company.position.name}
-            type={company.position.type}
-            value={company.position.value}
-            onChange={(e) => handleOnChange(company.companyId, "position", e)}
-          />
-          <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
-            Delete
-          </button>
-        </div>
-      ))}
-      <button onClick={handleAddButton}>Add</button>
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h3>Work experience</h3>
+      <form onSubmit={handleOnSubmit}>
+        {companyInformation.companies.map((company) => (
+          <div key={company.companyId}>
+            <label>{company.companyName.nameLabel}</label>
+            <input
+              name={company.companyName.name}
+              type={company.companyName.type}
+              value={company.companyName.value}
+              onChange={(e) =>
+                handleOnChange(company.companyId, "companyName", e)
+              }
+            />
+            <label>{company.position.positionLabel}</label>
+            <input
+              name={company.position.name}
+              type={company.position.type}
+              value={company.position.value}
+              onChange={(e) => handleOnChange(company.companyId, "position", e)}
+            />
+            <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
+              Delete
+            </button>
+          </div>
+        ))}
+        <button onClick={handleAddButton}>Add</button>
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 
   if (isSubmitted) {
-    formInputs = <CompanyTable companyData={companyInformation} edit={editHandler} />;
+    formInputs = (
+      <CompanyTable companyData={companyInformation} edit={editHandler} />
+    );
   }
   console.log("companyInformation: ", companyInformation);
   return <>{formInputs}</>;

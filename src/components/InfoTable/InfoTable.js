@@ -10,9 +10,6 @@ const InfoTable = (props) => {
       <table>
         <thead>
           <tr>
-            <th>CV</th>
-          </tr>
-          <tr>
             <th>General Information</th>
           </tr>
         </thead>

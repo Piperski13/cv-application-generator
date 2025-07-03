@@ -4,12 +4,12 @@ const RenderedCompany = (props) => {
     <>
       {props.companyData.map((company, index) => (
         <>
-          <tr key={index}>
+          <tr key={`companyName-${index}`}>
             <td>
               {company.companyName.nameLabel}: {company.companyName.value}
             </td>
           </tr>
-          <tr key={index}>
+          <tr key={`position-${index}`}>
             <td>
               {company.position.positionLabel}: {company.position.value}
             </td>

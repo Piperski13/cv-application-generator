@@ -30,19 +30,22 @@ const InfoForm = (props) => {
   };
 
   let formInputs = (
-    <form onSubmit={handleOnSubmit}>
-      {userInformation.map((info, index) => (
-        <div key={index}>
-          <label>{info.label}</label>
-          <input
-            type={info.type}
-            value={info.value}
-            onChange={(e) => info.setter(e.target.value)}
-          />
-        </div>
-      ))}
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h3>General Information</h3>
+      <form onSubmit={handleOnSubmit}>
+        {userInformation.map((info, index) => (
+          <div key={index}>
+            <label>{info.label}</label>
+            <input
+              type={info.type}
+              value={info.value}
+              onChange={(e) => info.setter(e.target.value)}
+            />
+          </div>
+        ))}
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 
   if (isSubmitted) {
@@ -51,7 +54,7 @@ const InfoForm = (props) => {
 
   return (
     <>
-      <h2>CV - generator</h2>
+      <h1>CV - generator</h1>
       {formInputs}
     </>
   );
