@@ -23,6 +23,11 @@ const CompanyForm = (props) => {
           name: "positiontitle",
           type: "text",
         },
+        responsibilities: {
+          value: "",
+          responsibilitiesLabel: "Job Responsibilities",
+          name: "responsibilities",
+        },
       },
     ],
   });
@@ -51,6 +56,11 @@ const CompanyForm = (props) => {
         positionLabel: "Position Title",
         name: "positiontitle",
         type: "text",
+      },
+      responsibilities: {
+        value: "",
+        responsibilitiesLabel: "Job Responsibilities",
+        name: "responsibilities",
       },
     };
     setCompanyInformation((prevCompanies) => ({
@@ -109,6 +119,16 @@ const CompanyForm = (props) => {
               type={company.position.type}
               value={company.position.value}
               onChange={(e) => handleOnChange(company.companyId, "position", e)}
+            />
+            <label>{company.responsibilities.responsibilitiesLabel}</label>
+            <textarea
+              name={company.responsibilities.name}
+              value={company.responsibilities.value}
+              onChange={(e) =>
+                handleOnChange(company.companyId, "responsibilities", e)
+              }
+              rows={4}
+              cols={40}
             />
             <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
               Delete
