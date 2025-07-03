@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import InfoTable from "../InfoTable/InfoTable";
+import CompanyTable from "../CompanyTable/CompanyTable";
 
 const CompanyForm = (props) => {
   //     companies: [
@@ -27,11 +27,11 @@ const CompanyForm = (props) => {
     ],
   });
 
-  //   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // setIsSubmitted(true);
+    setIsSubmitted(true);
   };
 
   const handleAddButton = (e) => {
@@ -84,9 +84,9 @@ const CompanyForm = (props) => {
     }));
   };
 
-  //   const editHandler = (e) => {
-  //     setIsSubmitted(false);
-  //   };
+  const editHandler = (e) => {
+    setIsSubmitted(false);
+  };
 
   let formInputs = (
     <form onSubmit={handleOnSubmit}>
@@ -118,9 +118,9 @@ const CompanyForm = (props) => {
     </form>
   );
 
-  //   if (isSubmitted) {
-  //     formInputs = <InfoTable infoData={companyInformation} edit={editHandler} />;
-  //   }
+  if (isSubmitted) {
+    formInputs = <CompanyTable companyData={companyInformation} edit={editHandler} />;
+  }
   console.log("companyInformation: ", companyInformation);
   return <>{formInputs}</>;
 };
