@@ -42,6 +42,7 @@ const InfoForm = (props) => {
           <div key={index}>
             <label>{info.label}</label>
             <input
+              required
               type={info.type}
               value={info.value}
               onChange={(e) => onChaneHandler(e, info.label)}
