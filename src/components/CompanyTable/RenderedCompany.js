@@ -1,10 +1,5 @@
 const RenderedCompany = (props) => {
   console.log(props.companyData);
-  //   responsibilities: {
-  //           value: "",
-  //           responsibilitiesLabel: "Job Responsibilities",
-  //           name: "responsibilities",
-  //         }
   return (
     <>
       {props.companyData.map((company, index) => (
@@ -23,6 +18,11 @@ const RenderedCompany = (props) => {
             <td>
               {company.responsibilities.responsibilitiesLabel}:{" "}
               {company.responsibilities.value}
+            </td>
+          </tr>
+          <tr key={`startDate-${index}`}>
+            <td>
+              {company.startDate.startDateLabel}: {company.startDate.value}
             </td>
           </tr>
         </>

@@ -28,6 +28,12 @@ const CompanyForm = (props) => {
           responsibilitiesLabel: "Job Responsibilities",
           name: "responsibilities",
         },
+        startDate: {
+          value: "",
+          startDateLabel: "Start Date",
+          name: "startDate",
+          type: "date",
+        },
       },
     ],
   });
@@ -61,6 +67,12 @@ const CompanyForm = (props) => {
         value: "",
         responsibilitiesLabel: "Job Responsibilities",
         name: "responsibilities",
+      },
+      startDate: {
+        value: "",
+        startDateLabel: "Start Date",
+        name: "startDate",
+        type: "date",
       },
     };
     setCompanyInformation((prevCompanies) => ({
@@ -129,6 +141,15 @@ const CompanyForm = (props) => {
               }
               rows={4}
               cols={40}
+            />
+            <label>{company.startDate.startDateLabel}</label>
+            <input
+              name={company.startDate.name}
+              type={company.startDate.type}
+              value={company.startDate.value}
+              onChange={(e) =>
+                handleOnChange(company.companyId, "startDate", e)
+              }
             />
             <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
               Delete
