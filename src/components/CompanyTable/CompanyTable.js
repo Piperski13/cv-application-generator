@@ -1,5 +1,5 @@
-import RenderedInfo from "./RenderedInfo";
-const InfoTable = (props) => {
+import RenderedCompany from "./RenderedCompany";
+const CompanyTable = (props) => {
   const handleEdit = (e) => {
     e.preventDefault();
     props.edit(e);
@@ -10,11 +10,11 @@ const InfoTable = (props) => {
       <table>
         <thead>
           <tr>
-            <th>General Information</th>
+            <th>Work experience</th>
           </tr>
         </thead>
         <tbody>
-          <RenderedInfo infoData={props.infoData} />
+          <RenderedCompany companyData={props.companyData.companies} />
         </tbody>
       </table>
       <button onClick={handleEdit}>Edit</button>
@@ -22,4 +22,4 @@ const InfoTable = (props) => {
   );
 };
 
-export default InfoTable;
+export default CompanyTable;
