@@ -25,6 +25,11 @@ const RenderedCompany = (props) => {
               {company.startDate.startDateLabel}: {company.startDate.value}
             </td>
           </tr>
+          <tr key={`endDate-${index}`}>
+            <td>
+              {company.endDate.endDateLabel}: {company.endDate.value}
+            </td>
+          </tr>
         </>
       ))}
     </>

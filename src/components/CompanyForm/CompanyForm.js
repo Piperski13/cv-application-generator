@@ -2,11 +2,6 @@ import { useState } from "react";
 import CompanyTable from "../CompanyTable/CompanyTable";
 
 const CompanyForm = (props) => {
-  //     companies: [
-  //     { companyId: 1011, companyName: "levi", positionTitle: "Software",
-  // 	responsibilities: "asdasda", startDate: "may", endDate:"june" },
-  //     ...
-  //   ]
   const [companyInformation, setCompanyInformation] = useState({
     companies: [
       {
@@ -32,6 +27,12 @@ const CompanyForm = (props) => {
           value: "",
           startDateLabel: "Start Date",
           name: "startDate",
+          type: "date",
+        },
+        endDate: {
+          value: "",
+          endDateLabel: "End Date",
+          name: "endDate",
           type: "date",
         },
       },
@@ -72,6 +73,12 @@ const CompanyForm = (props) => {
         value: "",
         startDateLabel: "Start Date",
         name: "startDate",
+        type: "date",
+      },
+      endDate: {
+        value: "",
+        endDateLabel: "End Date",
+        name: "endDate",
         type: "date",
       },
     };
@@ -150,6 +157,13 @@ const CompanyForm = (props) => {
               onChange={(e) =>
                 handleOnChange(company.companyId, "startDate", e)
               }
+            />
+            <label>{company.endDate.endDateLabel}</label>
+            <input
+              name={company.endDate.name}
+              type={company.endDate.type}
+              value={company.endDate.value}
+              onChange={(e) => handleOnChange(company.companyId, "endDate", e)}
             />
             <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
               Delete
