@@ -36,34 +36,32 @@ const InfoForm = (props) => {
   };
 
   let formInputs = (
-    <>
-      <h3>General Information</h3>
-      <form onSubmit={handleOnSubmit}>
-        {userInformation.map((info, index) => (
-          <div key={index}>
-            <label>{info.label}</label>
-            <input
-              required
-              type={info.type}
-              value={info.value}
-              onChange={(e) => onChaneHandler(e, info.label)}
-            />
-          </div>
-        ))}
-        <SubmitButton />
-      </form>
-    </>
+    <div className="flex justify-center">
+      <div>
+        <h1>CV - generator</h1>
+        <h3>General Information</h3>
+        <form onSubmit={handleOnSubmit}>
+          {userInformation.map((info, index) => (
+            <div key={index}>
+              <label>{info.label}</label>
+              <input
+                required
+                type={info.type}
+                value={info.value}
+                onChange={(e) => onChaneHandler(e, info.label)}
+              />
+            </div>
+          ))}
+          <SubmitButton />
+        </form>
+      </div>
+    </div>
   );
 
   if (isSubmitted) {
     formInputs = <InfoTable infoData={userInformation} edit={editHandler} />;
   }
 
-  return (
-    <>
-      <h1>CV - generator</h1>
-      {formInputs}
-    </>
-  );
+  return <>{formInputs}</>;
 };
 export default InfoForm;

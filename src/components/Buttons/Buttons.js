@@ -25,7 +25,7 @@ export const DeleteButton = ({ onClick }) => (
   <button
     type="button"
     onClick={onClick}
-    className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-600"
+    className="bg-red-500 text-white p-2 rounded-2xl hover:bg-red-600 w-8"
   >
     <FaTrash />
   </button>

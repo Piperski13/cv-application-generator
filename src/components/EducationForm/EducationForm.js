@@ -109,60 +109,73 @@ const EducationForm = (props) => {
   };
 
   let formInputs = (
-    <>
-      <h3>Education</h3>
-      <form onSubmit={handleOnSubmit}>
-        {educationInformation.educations.map((education) => (
-          <div key={education.educationId}>
-            <label>{education.schoolName.nameLabel}</label>
-            <input
-              required
-              name={education.schoolName.name}
-              type={education.schoolName.type}
-              value={education.schoolName.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "schoolName", e)
-              }
-            />
-            <label>{education.titleOfStudy.titleOfStudyLabel}</label>
-            <input
-              required
-              name={education.titleOfStudy.name}
-              type={education.titleOfStudy.type}
-              value={education.titleOfStudy.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "titleOfStudy", e)
-              }
-            />
-            <label>{education.startDate.startDateLabel}</label>
-            <input
-              required
-              name={education.startDate.name}
-              type={education.startDate.type}
-              value={education.startDate.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "startDate", e)
-              }
-            />
-            <label>{education.endDate.endDateLabel}</label>
-            <input
-              required
-              name={education.endDate.name}
-              type={education.endDate.type}
-              value={education.endDate.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "endDate", e)
-              }
-            />
-            <DeleteButton
-              onClick={(e) => handleDeleteButton(education.educationId, e)}
-            />
-          </div>
-        ))}
-        <AddButton onClick={handleAddButton} />
-        <SubmitButton />
-      </form>
-    </>
+    <div className="flex justify-center">
+      <div>
+        <h3>Education</h3>
+        <form onSubmit={handleOnSubmit}>
+          {educationInformation.educations.map((education) => (
+            <div
+              key={education.educationId}
+              className="flex justify-center flex-col"
+            >
+              <div>
+                <label>{education.schoolName.nameLabel}</label>
+                <input
+                  required
+                  name={education.schoolName.name}
+                  type={education.schoolName.type}
+                  value={education.schoolName.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "schoolName", e)
+                  }
+                />
+              </div>
+              <div>
+                <label>{education.titleOfStudy.titleOfStudyLabel}</label>
+                <input
+                  required
+                  name={education.titleOfStudy.name}
+                  type={education.titleOfStudy.type}
+                  value={education.titleOfStudy.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "titleOfStudy", e)
+                  }
+                />
+              </div>
+              <div>
+                <label>{education.startDate.startDateLabel}</label>
+                <input
+                  required
+                  name={education.startDate.name}
+                  type={education.startDate.type}
+                  value={education.startDate.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "startDate", e)
+                  }
+                />
+              </div>
+              <div>
+                <label>{education.endDate.endDateLabel}</label>
+                <input
+                  required
+                  name={education.endDate.name}
+                  type={education.endDate.type}
+                  value={education.endDate.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "endDate", e)
+                  }
+                />
+              </div>
+              <DeleteButton
+                onClick={(e) => handleDeleteButton(education.educationId, e)}
+              />
+            </div>
+          ))}
+          <AddButton onClick={handleAddButton} />
+          <SubmitButton />
+        </form>
+      </div>
+    </div>
   );
 
   if (isSubmitted) {
