@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InfoTable from "../InfoTable/InfoTable";
+import { SubmitButton } from "../Buttons/Buttons";
 
 const InfoForm = (props) => {
   const [userInformation, setuserInformation] = useState([
@@ -49,7 +50,7 @@ const InfoForm = (props) => {
             />
           </div>
         ))}
-        <button type="submit">Submit</button>
+        <SubmitButton />
       </form>
     </>
   );

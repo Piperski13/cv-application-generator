@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EducationTable from "../EducationTable/EducationTable";
+import { SubmitButton, AddButton, DeleteButton } from "../Buttons/Buttons";
 
 const EducationForm = (props) => {
   const [educationInformation, setEducationInformation] = useState({
@@ -153,15 +154,13 @@ const EducationForm = (props) => {
                 handleOnChange(education.educationId, "endDate", e)
               }
             />
-            <button
+            <DeleteButton
               onClick={(e) => handleDeleteButton(education.educationId, e)}
-            >
-              Delete
-            </button>
+            />
           </div>
         ))}
-        <button onClick={handleAddButton}>Add</button>
-        <button type="submit">Submit</button>
+        <AddButton onClick={handleAddButton} />
+        <SubmitButton />
       </form>
     </>
   );

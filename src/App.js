@@ -4,11 +4,11 @@ import EducationForm from "./components/EducationForm/EducationForm";
 
 function App() {
   return (
-    <>
+    <div className="font-merriweather">
       <InfoForm />
       <EducationForm />
       <CompanyForm />
-    </>
+    </div>
   );
 }
 

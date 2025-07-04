@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CompanyTable from "../CompanyTable/CompanyTable";
+import { SubmitButton, AddButton, DeleteButton } from "../Buttons/Buttons";
 
 const CompanyForm = (props) => {
   const [companyInformation, setCompanyInformation] = useState({
@@ -170,13 +171,13 @@ const CompanyForm = (props) => {
               value={company.endDate.value}
               onChange={(e) => handleOnChange(company.companyId, "endDate", e)}
             />
-            <button onClick={(e) => handleDeleteButton(company.companyId, e)}>
-              Delete
-            </button>
+            <DeleteButton
+              onClick={(e) => handleDeleteButton(company.companyId, e)}
+            />
           </div>
         ))}
-        <button onClick={handleAddButton}>Add</button>
-        <button type="submit">Submit</button>
+        <AddButton onClick={handleAddButton} />
+        <SubmitButton />
       </form>
     </>
   );
