@@ -128,6 +128,7 @@ const EducationForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(education.educationId, "schoolName", e)
                   }
+                  className="input-style"
                 />
               </div>
               <div>
@@ -140,6 +141,7 @@ const EducationForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(education.educationId, "titleOfStudy", e)
                   }
+                  className="input-style"
                 />
               </div>
               <div>
@@ -152,6 +154,7 @@ const EducationForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(education.educationId, "startDate", e)
                   }
+                  className="input-style"
                 />
               </div>
               <div>
@@ -164,6 +167,7 @@ const EducationForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(education.educationId, "endDate", e)
                   }
+                  className="input-style"
                 />
               </div>
               <DeleteButton

@@ -138,6 +138,7 @@ const CompanyForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(company.companyId, "companyName", e)
                   }
+                  className="input-style"
                 />
               </div>
               <div>
@@ -150,21 +151,21 @@ const CompanyForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(company.companyId, "position", e)
                   }
+                  className="input-style"
                 />
               </div>
-              <div>
-                <label>{company.responsibilities.responsibilitiesLabel}</label>
-                <textarea
-                  required
-                  name={company.responsibilities.name}
-                  value={company.responsibilities.value}
-                  onChange={(e) =>
-                    handleOnChange(company.companyId, "responsibilities", e)
-                  }
-                  rows={4}
-                  cols={40}
-                />
-              </div>
+              <label>{company.responsibilities.responsibilitiesLabel}</label>
+              <textarea
+                required
+                name={company.responsibilities.name}
+                value={company.responsibilities.value}
+                onChange={(e) =>
+                  handleOnChange(company.companyId, "responsibilities", e)
+                }
+                rows={4}
+                cols={40}
+                className="input-style"
+              />
               <div>
                 <label>{company.startDate.startDateLabel}</label>
                 <input
@@ -175,6 +176,7 @@ const CompanyForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(company.companyId, "startDate", e)
                   }
+                  className="input-style"
                 />
               </div>
               <div>
@@ -187,6 +189,7 @@ const CompanyForm = (props) => {
                   onChange={(e) =>
                     handleOnChange(company.companyId, "endDate", e)
                   }
+                  className="input-style"
                 />
               </div>
               <DeleteButton

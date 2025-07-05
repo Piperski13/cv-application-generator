@@ -49,6 +49,7 @@ const InfoForm = (props) => {
                 type={info.type}
                 value={info.value}
                 onChange={(e) => onChaneHandler(e, info.label)}
+                className="input-style"
               />
             </div>
           ))}

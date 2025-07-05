@@ -16,3 +16,8 @@ body {
   margin: 0;
   background-color: #3f3f3f;
 }
+@layer components {
+  .input-style {
+    @apply border border-gray-300 rounded-lg p-2 w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+}
