@@ -7,7 +7,7 @@ const InfoTable = (props) => {
   };
 
   return (
-    <>
+    <div>
       <table>
         <thead>
           <tr>
@@ -19,7 +19,7 @@ const InfoTable = (props) => {
         </tbody>
       </table>
       <EditButton onClick={handleEdit} />
-    </>
+    </div>
   );
 };
 
