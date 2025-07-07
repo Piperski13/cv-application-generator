@@ -108,6 +108,11 @@ const EducationForm = (props) => {
     setIsSubmitted(false);
   };
 
+  let borderHolder = "";
+  if (educationInformation.educations.length > 1) {
+    borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
+  }
+
   let formInputs = (
     <div className="flex justify-center">
       <div>
@@ -123,7 +128,7 @@ const EducationForm = (props) => {
               className="flex justify-center flex-col"
             >
               <div>
-                <div className="flex justify-between items-center mb-1">
+                <div className="flex justify-between items-center my-2 ">
                   <label>{education.schoolName.nameLabel}</label>
                   <DeleteButton
                     onClick={(e) =>
@@ -181,6 +186,7 @@ const EducationForm = (props) => {
                   className="input-style"
                 />
               </div>
+              {borderHolder}
             </div>
           ))}
           <SubmitButton />

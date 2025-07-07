@@ -118,6 +118,11 @@ const CompanyForm = (props) => {
     setIsSubmitted(false);
   };
 
+  let borderHolder = "";
+  if (companyInformation.companies.length > 1) {
+    borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
+  }
+
   let formInputs = (
     <div className="">
       <div>
@@ -200,6 +205,7 @@ const CompanyForm = (props) => {
                   className="input-style"
                 />
               </div>
+              {borderHolder}
             </div>
           ))}
           <SubmitButton />
