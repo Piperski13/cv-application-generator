@@ -41,7 +41,7 @@ const InfoForm = (props) => {
         <h1 className="bg-blue-500 text-center p-5 mb-5 font-bold text-3xl rounded-2xl text-white">
           CV - generator
         </h1>
-        <h3>General Information</h3>
+        <h3 className="border-b-4 border-indigo-500">General Information</h3>
         <form onSubmit={handleOnSubmit}>
           {userInformation.map((info, index) => (
             <div key={index}>
