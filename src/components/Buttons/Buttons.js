@@ -3,12 +3,14 @@ import { FaCheck, FaTrash } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 
 export const SubmitButton = () => (
-  <button
-    type="submit"
-    className="bg-green-500 text-white p-4 mb-1 rounded-2xl hover:bg-green-600"
-  >
-    <FaCheck />
-  </button>
+  <div className="flex justify-center items-center mt-3">
+    <button
+      type="submit"
+      className="bg-green-500 text-white p-4 mb-1 rounded-2xl hover:bg-green-600"
+    >
+      <FaCheck />
+    </button>
+  </div>
 );
 
 export const AddButton = ({ onClick }) => (

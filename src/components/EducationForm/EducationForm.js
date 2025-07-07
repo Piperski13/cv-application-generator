@@ -123,7 +123,14 @@ const EducationForm = (props) => {
               className="flex justify-center flex-col"
             >
               <div>
-                <label>{education.schoolName.nameLabel}</label>
+                <div className="flex justify-between items-center mb-1">
+                  <label>{education.schoolName.nameLabel}</label>
+                  <DeleteButton
+                    onClick={(e) =>
+                      handleDeleteButton(education.educationId, e)
+                    }
+                  />
+                </div>
                 <input
                   required
                   name={education.schoolName.name}
@@ -174,9 +181,6 @@ const EducationForm = (props) => {
                   className="input-style"
                 />
               </div>
-              <DeleteButton
-                onClick={(e) => handleDeleteButton(education.educationId, e)}
-              />
             </div>
           ))}
           <SubmitButton />

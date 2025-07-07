@@ -132,7 +132,12 @@ const CompanyForm = (props) => {
               className="flex justify-center flex-col"
             >
               <div>
-                <label>{company.companyName.nameLabel}</label>
+                <div className="flex justify-between items-center mb-1">
+                  <label>{company.companyName.nameLabel}</label>
+                  <DeleteButton
+                    onClick={(e) => handleDeleteButton(company.companyId, e)}
+                  />
+                </div>
                 <input
                   required
                   name={company.companyName.name}
@@ -195,9 +200,6 @@ const CompanyForm = (props) => {
                   className="input-style"
                 />
               </div>
-              <DeleteButton
-                onClick={(e) => handleDeleteButton(company.companyId, e)}
-              />
             </div>
           ))}
           <SubmitButton />
