@@ -36,9 +36,11 @@ const InfoForm = (props) => {
   };
 
   let formInputs = (
-    <div className="flex justify-center">
+    <div className="">
       <div>
-        <h1>CV - generator</h1>
+        <h1 className="bg-blue-500 text-center p-5 mb-5 font-bold text-3xl rounded-2xl text-white">
+          CV - generator
+        </h1>
         <h3>General Information</h3>
         <form onSubmit={handleOnSubmit}>
           {userInformation.map((info, index) => (

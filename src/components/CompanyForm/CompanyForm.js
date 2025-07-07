@@ -119,9 +119,12 @@ const CompanyForm = (props) => {
   };
 
   let formInputs = (
-    <div className="flex justify-center">
+    <div className="">
       <div>
-        <h3>Work experience</h3>
+        <div className="div-underline-style">
+          <h3>Work experience</h3>
+          <AddButton onClick={handleAddButton} />
+        </div>
         <form onSubmit={handleOnSubmit}>
           {companyInformation.companies.map((company) => (
             <div
@@ -197,7 +200,6 @@ const CompanyForm = (props) => {
               />
             </div>
           ))}
-          <AddButton onClick={handleAddButton} />
           <SubmitButton />
         </form>
       </div>

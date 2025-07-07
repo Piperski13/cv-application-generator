@@ -4,10 +4,12 @@ import EducationForm from "./components/EducationForm/EducationForm";
 
 function App() {
   return (
-    <div className="font-merriweather flex justify-center flex-col">
-      <InfoForm />
-      <EducationForm />
-      <CompanyForm />
+    <div className="flex justify-center items-center font-merriweather bg-gray-50 text-gray-700">
+      <div className="flex  justify-center items-center flex-col w-[500px] border border-gray-300 p-4 my-8 rounded-2xl">
+        <InfoForm />
+        <EducationForm />
+        <CompanyForm />
+      </div>
     </div>
   );
 }

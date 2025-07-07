@@ -111,7 +111,11 @@ const EducationForm = (props) => {
   let formInputs = (
     <div className="flex justify-center">
       <div>
-        <h3>Education</h3>
+        <div className="div-underline-style">
+          <h3 className="inline-block">Education</h3>
+          <AddButton onClick={handleAddButton} />
+        </div>
+
         <form onSubmit={handleOnSubmit}>
           {educationInformation.educations.map((education) => (
             <div
@@ -175,7 +179,6 @@ const EducationForm = (props) => {
               />
             </div>
           ))}
-          <AddButton onClick={handleAddButton} />
           <SubmitButton />
         </form>
       </div>
