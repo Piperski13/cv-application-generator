@@ -118,68 +118,100 @@ const CompanyForm = (props) => {
     setIsSubmitted(false);
   };
 
+  let borderHolder = "";
+  if (companyInformation.companies.length > 1) {
+    borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
+  }
+
   let formInputs = (
-    <>
-      <h3>Work experience</h3>
-      <form onSubmit={handleOnSubmit}>
-        {companyInformation.companies.map((company) => (
-          <div key={company.companyId}>
-            <label>{company.companyName.nameLabel}</label>
-            <input
-              required
-              name={company.companyName.name}
-              type={company.companyName.type}
-              value={company.companyName.value}
-              onChange={(e) =>
-                handleOnChange(company.companyId, "companyName", e)
-              }
-            />
-            <label>{company.position.positionLabel}</label>
-            <input
-              required
-              name={company.position.name}
-              type={company.position.type}
-              value={company.position.value}
-              onChange={(e) => handleOnChange(company.companyId, "position", e)}
-            />
-            <label>{company.responsibilities.responsibilitiesLabel}</label>
-            <textarea
-              required
-              name={company.responsibilities.name}
-              value={company.responsibilities.value}
-              onChange={(e) =>
-                handleOnChange(company.companyId, "responsibilities", e)
-              }
-              rows={4}
-              cols={40}
-            />
-            <label>{company.startDate.startDateLabel}</label>
-            <input
-              required
-              name={company.startDate.name}
-              type={company.startDate.type}
-              value={company.startDate.value}
-              onChange={(e) =>
-                handleOnChange(company.companyId, "startDate", e)
-              }
-            />
-            <label>{company.endDate.endDateLabel}</label>
-            <input
-              required
-              name={company.endDate.name}
-              type={company.endDate.type}
-              value={company.endDate.value}
-              onChange={(e) => handleOnChange(company.companyId, "endDate", e)}
-            />
-            <DeleteButton
-              onClick={(e) => handleDeleteButton(company.companyId, e)}
-            />
-          </div>
-        ))}
-        <AddButton onClick={handleAddButton} />
-        <SubmitButton />
-      </form>
-    </>
+    <div className="">
+      <div>
+        <div className="div-underline-style">
+          <h3>Work experience</h3>
+          <AddButton onClick={handleAddButton} />
+        </div>
+        <form onSubmit={handleOnSubmit}>
+          {companyInformation.companies.map((company) => (
+            <div
+              key={company.companyId}
+              className="flex justify-center flex-col"
+            >
+              <div>
+                <div className="flex justify-between items-center mb-1">
+                  <label>{company.companyName.nameLabel}</label>
+                  <DeleteButton
+                    onClick={(e) => handleDeleteButton(company.companyId, e)}
+                  />
+                </div>
+                <input
+                  required
+                  name={company.companyName.name}
+                  type={company.companyName.type}
+                  value={company.companyName.value}
+                  onChange={(e) =>
+                    handleOnChange(company.companyId, "companyName", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <div>
+                <label>{company.position.positionLabel}</label>
+                <input
+                  required
+                  name={company.position.name}
+                  type={company.position.type}
+                  value={company.position.value}
+                  onChange={(e) =>
+                    handleOnChange(company.companyId, "position", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <label>{company.responsibilities.responsibilitiesLabel}</label>
+              <textarea
+                required
+                name={company.responsibilities.name}
+                value={company.responsibilities.value}
+                onChange={(e) =>
+                  handleOnChange(company.companyId, "responsibilities", e)
+                }
+                rows={4}
+                cols={40}
+                className="input-style"
+              />
+              <div>
+                <label>{company.startDate.startDateLabel}</label>
+                <input
+                  required
+                  name={company.startDate.name}
+                  type={company.startDate.type}
+                  value={company.startDate.value}
+                  onChange={(e) =>
+                    handleOnChange(company.companyId, "startDate", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <div>
+                <label>{company.endDate.endDateLabel}</label>
+                <input
+                  required
+                  name={company.endDate.name}
+                  type={company.endDate.type}
+                  value={company.endDate.value}
+                  onChange={(e) =>
+                    handleOnChange(company.companyId, "endDate", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              {borderHolder}
+            </div>
+          ))}
+          <SubmitButton />
+        </form>
+      </div>
+    </div>
   );
 
   if (isSubmitted) {

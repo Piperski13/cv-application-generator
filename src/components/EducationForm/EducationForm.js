@@ -108,61 +108,96 @@ const EducationForm = (props) => {
     setIsSubmitted(false);
   };
 
+  let borderHolder = "";
+  if (educationInformation.educations.length > 1) {
+    borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
+  }
+
+  console.log(
+    "educationInformation.educations.length: ",
+    educationInformation.educations.length
+  );
+
   let formInputs = (
-    <>
-      <h3>Education</h3>
-      <form onSubmit={handleOnSubmit}>
-        {educationInformation.educations.map((education) => (
-          <div key={education.educationId}>
-            <label>{education.schoolName.nameLabel}</label>
-            <input
-              required
-              name={education.schoolName.name}
-              type={education.schoolName.type}
-              value={education.schoolName.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "schoolName", e)
-              }
-            />
-            <label>{education.titleOfStudy.titleOfStudyLabel}</label>
-            <input
-              required
-              name={education.titleOfStudy.name}
-              type={education.titleOfStudy.type}
-              value={education.titleOfStudy.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "titleOfStudy", e)
-              }
-            />
-            <label>{education.startDate.startDateLabel}</label>
-            <input
-              required
-              name={education.startDate.name}
-              type={education.startDate.type}
-              value={education.startDate.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "startDate", e)
-              }
-            />
-            <label>{education.endDate.endDateLabel}</label>
-            <input
-              required
-              name={education.endDate.name}
-              type={education.endDate.type}
-              value={education.endDate.value}
-              onChange={(e) =>
-                handleOnChange(education.educationId, "endDate", e)
-              }
-            />
-            <DeleteButton
-              onClick={(e) => handleDeleteButton(education.educationId, e)}
-            />
-          </div>
-        ))}
-        <AddButton onClick={handleAddButton} />
-        <SubmitButton />
-      </form>
-    </>
+    <div className="flex justify-center">
+      <div>
+        <div className="div-underline-style">
+          <h3 className="inline-block">Education</h3>
+          <AddButton onClick={handleAddButton} />
+        </div>
+
+        <form onSubmit={handleOnSubmit}>
+          {educationInformation.educations.map((education) => (
+            <div
+              key={education.educationId}
+              className="flex justify-center flex-col"
+            >
+              <div>
+                <div className="flex justify-between items-center my-2 ">
+                  <label>{education.schoolName.nameLabel}</label>
+                  <DeleteButton
+                    onClick={(e) =>
+                      handleDeleteButton(education.educationId, e)
+                    }
+                  />
+                </div>
+                <input
+                  required
+                  name={education.schoolName.name}
+                  type={education.schoolName.type}
+                  value={education.schoolName.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "schoolName", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <div>
+                <label>{education.titleOfStudy.titleOfStudyLabel}</label>
+                <input
+                  required
+                  name={education.titleOfStudy.name}
+                  type={education.titleOfStudy.type}
+                  value={education.titleOfStudy.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "titleOfStudy", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <div>
+                <label>{education.startDate.startDateLabel}</label>
+                <input
+                  required
+                  name={education.startDate.name}
+                  type={education.startDate.type}
+                  value={education.startDate.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "startDate", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              <div>
+                <label>{education.endDate.endDateLabel}</label>
+                <input
+                  required
+                  name={education.endDate.name}
+                  type={education.endDate.type}
+                  value={education.endDate.value}
+                  onChange={(e) =>
+                    handleOnChange(education.educationId, "endDate", e)
+                  }
+                  className="input-style"
+                />
+              </div>
+              {borderHolder}
+            </div>
+          ))}
+          <SubmitButton />
+        </form>
+      </div>
+    </div>
   );
 
   if (isSubmitted) {

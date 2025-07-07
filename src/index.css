@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
-
-* {
-  box-sizing: border-box;
+@layer base {
+  form {
+    @apply my-6 border border-gray-200 rounded-lg p-2;
+  }
 }
 
-html {
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: #3f3f3f;
+@layer components {
+  .input-style {
+    @apply border border-gray-300 rounded-lg p-2 w-[350px] block focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  .div-underline-style {
+    @apply flex justify-between items-center border-b-4 border-indigo-500 min-w-[350px];
+  }
 }

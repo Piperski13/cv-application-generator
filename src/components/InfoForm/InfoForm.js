@@ -36,34 +36,35 @@ const InfoForm = (props) => {
   };
 
   let formInputs = (
-    <>
-      <h3>General Information</h3>
-      <form onSubmit={handleOnSubmit}>
-        {userInformation.map((info, index) => (
-          <div key={index}>
-            <label>{info.label}</label>
-            <input
-              required
-              type={info.type}
-              value={info.value}
-              onChange={(e) => onChaneHandler(e, info.label)}
-            />
-          </div>
-        ))}
-        <SubmitButton />
-      </form>
-    </>
+    <div className="">
+      <div>
+        <h1 className="bg-blue-500 text-center p-5 mb-5 font-bold text-3xl rounded-2xl text-white">
+          CV - generator
+        </h1>
+        <h3>General Information</h3>
+        <form onSubmit={handleOnSubmit}>
+          {userInformation.map((info, index) => (
+            <div key={index}>
+              <label>{info.label}</label>
+              <input
+                required
+                type={info.type}
+                value={info.value}
+                onChange={(e) => onChaneHandler(e, info.label)}
+                className="input-style"
+              />
+            </div>
+          ))}
+          <SubmitButton />
+        </form>
+      </div>
+    </div>
   );
 
   if (isSubmitted) {
     formInputs = <InfoTable infoData={userInformation} edit={editHandler} />;
   }
 
-  return (
-    <>
-      <h1>CV - generator</h1>
-      {formInputs}
-    </>
-  );
+  return <>{formInputs}</>;
 };
 export default InfoForm;
