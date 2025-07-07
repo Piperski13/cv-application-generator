@@ -1,4 +1,5 @@
 import RenderedCompany from "./RenderedCompany";
+import { EditButton } from "../Buttons/Buttons";
 const CompanyTable = (props) => {
   const handleEdit = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const CompanyTable = (props) => {
           <RenderedCompany companyData={props.companyData.companies} />
         </tbody>
       </table>
-      <button onClick={handleEdit}>Edit</button>
+      <EditButton onClick={handleEdit} />
     </>
   );
 };

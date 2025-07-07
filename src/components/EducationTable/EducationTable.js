@@ -1,4 +1,5 @@
 import RenderedEducation from "./RenderedEducation";
+import { EditButton } from "../Buttons/Buttons";
 const EducationTable = (props) => {
   const handleEdit = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const EducationTable = (props) => {
           <RenderedEducation educationData={props.educationData.educations} />
         </tbody>
       </table>
-      <button onClick={handleEdit}>Edit</button>
+      <EditButton onClick={handleEdit} />
     </>
   );
 };

@@ -1,4 +1,5 @@
 import RenderedInfo from "./RenderedInfo";
+import { EditButton } from "../Buttons/Buttons";
 const InfoTable = (props) => {
   const handleEdit = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const InfoTable = (props) => {
           <RenderedInfo infoData={props.infoData} />
         </tbody>
       </table>
-      <button onClick={handleEdit}>Edit</button>
+      <EditButton onClick={handleEdit} />
     </>
   );
 };
