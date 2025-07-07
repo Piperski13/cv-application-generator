@@ -113,6 +113,11 @@ const EducationForm = (props) => {
     borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
   }
 
+  console.log(
+    "educationInformation.educations.length: ",
+    educationInformation.educations.length
+  );
+
   let formInputs = (
     <div className="flex justify-center">
       <div>
