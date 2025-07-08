@@ -10,9 +10,9 @@
 
 @layer components {
   .input-style {
-    @apply border border-gray-300 rounded-lg p-2 w-[400px] block focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply border border-gray-300 rounded-lg p-1 w-[250px] sm:p-2 sm:w-[400px] block focus:outline-none focus:ring-2 focus:ring-blue-500;
   }
   .div-underline-style {
-    @apply flex justify-between items-center border-b-4 border-indigo-500 min-w-[400px];
+    @apply flex justify-between items-center border-b-4 border-indigo-500 sm:min-w-[400px];
   }
 }

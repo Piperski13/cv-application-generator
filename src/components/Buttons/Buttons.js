@@ -27,7 +27,7 @@ export const EditButton = ({ onClick }) => (
   <button
     type="button"
     onClick={onClick}
-    className="bg-indigo-500 text-white p-4 my-2 mr-12 mb-1 max-h-12 rounded-2xl hover:bg-blue-600"
+    className="bg-indigo-500 text-white p-4 my-2 sm:mr-12 mb-1 max-h-12 rounded-2xl hover:bg-blue-600"
   >
     <FaEdit />
   </button>

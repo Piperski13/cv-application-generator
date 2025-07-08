@@ -7,11 +7,16 @@ const EducationTable = (props) => {
   };
 
   return (
-    <div className="w-[750px] flex justify-between mb-6 pl-12">
+    <div className="flex justify-center flex-wrap mb-6 sm:pl-12 sm:w-[750px] sm:flex-nowrap sm:justify-between">
       <table>
         <thead>
-          <tr className="border-b-4 border-indigo-500">
-            <th className="text-left">Education</th>
+          <tr>
+            <th className="text-left ">Education</th>
+          </tr>
+          <tr>
+            <td colSpan="2">
+              <div className="h-1 bg-indigo-500 w-[350px] mx-auto my-2 sm:w-[575px]"></div>
+            </td>
           </tr>
         </thead>
         <tbody>
