@@ -13,9 +13,6 @@ const EducationTable = (props) => {
           <tr className="border-b-4 border-indigo-500">
             <th className="text-left">Education</th>
           </tr>
-          <tr>
-            <th className="pb-7"></th>
-          </tr>
         </thead>
         <tbody>
           <RenderedEducation educationData={props.educationData.educations} />

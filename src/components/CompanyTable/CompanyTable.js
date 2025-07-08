@@ -7,19 +7,24 @@ const CompanyTable = (props) => {
   };
 
   return (
-    <>
+    <div className="w-[750px] flex justify-between mb-6 pl-12">
       <table>
         <thead>
           <tr>
-            <th>Work experience</th>
+            <th className="pt-7"></th>
+          </tr>
+          <tr className="border-b-4 border-indigo-500">
+            <th className="text-left">Work experience</th>
           </tr>
         </thead>
         <tbody>
           <RenderedCompany companyData={props.companyData.companies} />
         </tbody>
       </table>
-      <EditButton onClick={handleEdit} />
-    </>
+      <div className="flex items-center">
+        <EditButton onClick={handleEdit} />
+      </div>
+    </div>
   );
 };
 
