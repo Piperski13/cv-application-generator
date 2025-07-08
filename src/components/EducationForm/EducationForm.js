@@ -113,13 +113,7 @@ const EducationForm = (props) => {
     borderHolder = <div className="border-b-4 border-gray-500 pb-10"></div>;
   }
 
-  console.log(
-    "educationInformation.educations.length: ",
-    educationInformation.educations.length
-  );
-
   let formInputs = (
-    <div className="flex justify-center">
       <div>
         <div className="div-underline-style">
           <h3 className="inline-block">Education</h3>
@@ -197,7 +191,6 @@ const EducationForm = (props) => {
           <SubmitButton />
         </form>
       </div>
-    </div>
   );
 
   if (isSubmitted) {

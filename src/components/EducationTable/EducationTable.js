@@ -1,4 +1,5 @@
 import RenderedEducation from "./RenderedEducation";
+import { EditButton } from "../Buttons/Buttons";
 const EducationTable = (props) => {
   const handleEdit = (e) => {
     e.preventDefault();
@@ -6,19 +7,21 @@ const EducationTable = (props) => {
   };
 
   return (
-    <>
+    <div className="w-[750px] flex justify-between mb-6 pl-12">
       <table>
         <thead>
-          <tr>
-            <th>Education</th>
+          <tr className="border-b-4 border-indigo-500">
+            <th className="text-left">Education</th>
           </tr>
         </thead>
         <tbody>
           <RenderedEducation educationData={props.educationData.educations} />
         </tbody>
       </table>
-      <button onClick={handleEdit}>Edit</button>
-    </>
+      <div className="flex items-center">
+        <EditButton onClick={handleEdit} />
+      </div>
+    </div>
   );
 };
 

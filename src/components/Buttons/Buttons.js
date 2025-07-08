@@ -1,5 +1,5 @@
 // Buttons.js
-import { FaCheck, FaTrash } from "react-icons/fa";
+import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 
 export const SubmitButton = () => (
@@ -20,6 +20,16 @@ export const AddButton = ({ onClick }) => (
     className="bg-blue-500 text-white p-4 mb-1 rounded-2xl hover:bg-blue-600"
   >
     <HiPlus />
+  </button>
+);
+
+export const EditButton = ({ onClick }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className="bg-indigo-500 text-white p-4 my-2 mr-12 mb-1 max-h-12 rounded-2xl hover:bg-blue-600"
+  >
+    <FaEdit />
   </button>
 );
 

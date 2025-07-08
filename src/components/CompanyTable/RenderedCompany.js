@@ -3,30 +3,37 @@ const RenderedCompany = (props) => {
     <>
       {props.companyData.map((company, index) => (
         <>
-          <tr key={`companyName-${index}`}>
-            <td>
-              {company.companyName.nameLabel}: {company.companyName.value}
+          <tr key={`companyName-${index}`} className="text-base/8">
+            <td className="w-[500px] pt-4">
+              {company.companyName.nameLabel} : <nav className="pl-10 inline" />{" "}
+              {company.companyName.value}
             </td>
           </tr>
-          <tr key={`position-${index}`}>
+          <tr key={`position-${index}`} className="text-base/8">
             <td>
-              {company.position.positionLabel}: {company.position.value}
+              {company.position.positionLabel} :{" "}
+              <nav className="pl-14 inline" /> {company.position.value}
             </td>
           </tr>
           <tr key={`responsibilities-${index}`}>
-            <td>
-              {company.responsibilities.responsibilitiesLabel}:{" "}
-              {company.responsibilities.value}
+            <td className="pt-5 pb-5">
+              <span>{company.responsibilities.responsibilitiesLabel}:</span>
+              <span className="block mt-3" />
+              <span className="text-sm/6">
+                {company.responsibilities.value}
+              </span>
             </td>
           </tr>
-          <tr key={`company-startDate-${index}`}>
+          <tr key={`company-startDate-${index}`} className="text-base/8">
             <td>
-              {company.startDate.startDateLabel}: {company.startDate.value}
+              {company.startDate.startDateLabel} :{" "}
+              <nav className="pl-10 inline" /> {company.startDate.value}
             </td>
           </tr>
-          <tr key={`company-endDate-${index}`}>
-            <td>
-              {company.endDate.endDateLabel}: {company.endDate.value}
+          <tr key={`company-endDate-${index}`} className="text-base/8">
+            <td className="pb-10 border-b-4 border-indigo-500">
+              {company.endDate.endDateLabel} : <nav className="pl-10 inline" />
+              {company.endDate.value}
             </td>
           </tr>
         </>
