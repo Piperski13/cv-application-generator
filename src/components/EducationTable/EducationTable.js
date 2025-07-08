@@ -7,19 +7,24 @@ const EducationTable = (props) => {
   };
 
   return (
-    <>
+    <div className="w-[750px] flex justify-between mb-6 pl-12">
       <table>
         <thead>
+          <tr className="border-b-4 border-indigo-500">
+            <th className="text-left">Education</th>
+          </tr>
           <tr>
-            <th>Education</th>
+            <th className="pb-7"></th>
           </tr>
         </thead>
         <tbody>
           <RenderedEducation educationData={props.educationData.educations} />
         </tbody>
       </table>
-      <EditButton onClick={handleEdit} />
-    </>
+      <div className="flex items-center">
+        <EditButton onClick={handleEdit} />
+      </div>
+    </div>
   );
 };
 
