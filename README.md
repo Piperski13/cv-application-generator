@@ -28,6 +28,12 @@ Want to see the output? [Download Sample CV](./assets/John_Doe_cvpdf)
 
 ---
 
+### 🧠 Smart State Management
+
+This app isn’t just pretty — it's built with solid React state handling behind the scenes. You can freely add as many education or experience sections as you want without breaking a sweat. The dynamic forms, controlled inputs, and clean UI transitions all work together to make the experience smooth and intuitive.
+
+---
+
 ## 🚀 Technologies Used
 
 - ⚛️ React
