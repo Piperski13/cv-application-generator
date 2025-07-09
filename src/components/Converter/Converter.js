@@ -14,35 +14,61 @@ const PDFGenerator = () => {
     const nameString = userData.replace(/\s+/g, "_") + "_cv.pdf";
     setPdfName(nameString);
   };
-
   const generatePDF = () => {
+    const input = document.getElementById("cv-content");
     setHideButtons(true);
 
     setTimeout(() => {
-      const input = document.getElementById("cv-content");
-      html2canvas(input)
-        .then((canvas) => {
-          const imgData = canvas.toDataURL("image/png");
-          const pdf = new jsPDF({
-            orientation: "portrait",
-            unit: "pt",
-            format: "a4",
-          });
+      html2canvas(input, {
+        scale: 2,
+        scrollY: -window.scrollY,
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
 
-          const imgProps = pdf.getImageProperties(imgData);
-          const pdfWidth = pdf.internal.pageSize.getWidth();
-          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        const pdfWidth = 595;
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-          pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-          pdf.save(pdfName || "cv.pdf");
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setHideButtons(false);
-          }, 300);
+        const pdf = new jsPDF({
+          orientation: "portrait",
+          unit: "pt",
+          format: [pdfWidth, pdfHeight],
         });
-    }, 100);
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save(pdfName || "cv.pdf");
+
+        setHideButtons(false);
+      });
+    }, 500);
   };
+
+  //     setHideButtons(true);
+
+  //     setTimeout(() => {
+  //       const input = document.getElementById("cv-content");
+  //       html2canvas(input)
+  //         .then((canvas) => {
+  //           const imgData = canvas.toDataURL("image/png");
+  //           const pdf = new jsPDF({
+  //             orientation: "portrait",
+  //             unit: "pt",
+  //             format: "a4",
+  //           });
+
+  //           const imgProps = pdf.getImageProperties(imgData);
+  //           const pdfWidth = pdf.internal.pageSize.getWidth();
+  //           const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  //           pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+  //           pdf.save(pdfName || "cv.pdf");
+  //         })
+  //         .finally(() => {
+  //           setTimeout(() => {
+  //             setHideButtons(false);
+  //           }, 300);
+  //         });
+  //     }, 100);
+  //   };
   return (
     <>
       <div
