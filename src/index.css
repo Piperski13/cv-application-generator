@@ -16,3 +16,9 @@
     @apply flex justify-between items-center border-b-4 border-indigo-500 sm:min-w-[400px];
   }
 }
+
+@layer utilities {
+  .no-printing {
+    @apply hidden;
+  }
+}

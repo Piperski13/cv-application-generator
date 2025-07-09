@@ -63,7 +63,13 @@ const InfoForm = (props) => {
   );
 
   if (isSubmitted) {
-    formInputs = <InfoTable infoData={userInformation} edit={editHandler} />;
+    formInputs = (
+      <InfoTable
+        infoData={userInformation}
+        edit={editHandler}
+        hide={props.hideButtons}
+      />
+    );
   }
 
   return <>{formInputs}</>;

@@ -216,7 +216,11 @@ const CompanyForm = (props) => {
 
   if (isSubmitted) {
     formInputs = (
-      <CompanyTable companyData={companyInformation} edit={editHandler} />
+      <CompanyTable
+        companyData={companyInformation}
+        edit={editHandler}
+        hide={props.hideButtons}
+      />
     );
   }
 

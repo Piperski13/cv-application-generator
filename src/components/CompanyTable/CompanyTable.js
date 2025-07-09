@@ -27,7 +27,7 @@ const CompanyTable = (props) => {
         </tbody>
       </table>
       <div className="flex items-center">
-        <EditButton onClick={handleEdit} />
+        <EditButton onClick={handleEdit} hide={props.hide} />
       </div>
     </div>
   );
