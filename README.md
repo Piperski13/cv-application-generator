@@ -14,7 +14,7 @@ A responsive React application that allows users to input their general, educati
 
 ---
 
-## ✨ Check it out Live
+## 💻 Check it out Live
 Click here ---> [link](https://cv-generator-pdf-downloader.netlify.app/)
 
 ---
