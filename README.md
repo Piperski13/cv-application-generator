@@ -24,7 +24,7 @@ A responsive React application that allows users to input their general, educati
 
 ## 📎 Sample PDF
 
-Want to see the output? [Download Sample CV](./assets/John_Doe_cvpdf)
+Want to see the output? [Download Sample CV](./assets/John_Doe_cv.pdf)
 
 ---
 
