@@ -1,8 +1,9 @@
+import React from "react";
 const RenderedCompany = (props) => {
   return (
     <>
       {props.companyData.map((company, index) => (
-        <>
+        <React.Fragment key={company.companyId || index}>
           <tr key={`companyName-${index}`} className="text-base/8">
             <td className="w-[500px] pt-4">
               {company.companyName.nameLabel} : <nav className="pl-10 inline" />{" "}
@@ -36,7 +37,7 @@ const RenderedCompany = (props) => {
               {company.endDate.value}
             </td>
           </tr>
-        </>
+        </React.Fragment>
       ))}
     </>
   );

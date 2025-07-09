@@ -17,6 +17,7 @@ const InfoForm = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    props.userData(userInformation[0].value);
     setIsSubmitted(true);
   };
 

@@ -1,8 +1,9 @@
+import React from "react";
 const RenderedEducation = (props) => {
   return (
     <>
       {props.educationData.map((education, index) => (
-        <>
+        <React.Fragment key={education.educationId || index}>
           <tr key={`schoolName-${index}`} className="text-base/8">
             <td className="w-[170px] pt-10">
               {education.schoolName.nameLabel} :
@@ -24,7 +25,7 @@ const RenderedEducation = (props) => {
             <td className="pb-10">{education.endDate.endDateLabel}:</td>
             <td className="pb-10">{education.endDate.value}</td>
           </tr>
-        </>
+        </React.Fragment>
       ))}
     </>
   );
