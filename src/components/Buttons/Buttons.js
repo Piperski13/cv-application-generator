@@ -1,4 +1,3 @@
-// Buttons.js
 import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 
@@ -23,11 +22,13 @@ export const AddButton = ({ onClick }) => (
   </button>
 );
 
-export const EditButton = ({ onClick }) => (
+export const EditButton = ({ onClick, hide }) => (
   <button
     type="button"
     onClick={onClick}
-    className="bg-indigo-500 text-white p-4 my-2 sm:mr-12 mb-1 max-h-12 rounded-2xl hover:bg-blue-600"
+    className={`bg-indigo-500 text-white p-4 my-2 sm:mr-12 mb-1 max-h-12 rounded-2xl hover:bg-blue-600 ${
+      hide ? "hidden" : ""
+    }`}
   >
     <FaEdit />
   </button>
